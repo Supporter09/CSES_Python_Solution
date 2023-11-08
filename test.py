@@ -1,34 +1,18 @@
-# n = int(input())
+T = int(input())
+while T > 0 :   
+    N = int(input())
+    arr = list(map(int, input().split()))
+    appear_dict = dict()
+    for i in range(len(arr)):
+        if appear_dict.get(arr[i]) == None:
+            appear_dict[arr[i]] = [1, N-i]
+        else:
+            appear_dict[arr[i]][0] = appear_dict[arr[i]][0] + 1
+    
+    check_arr = list(map(list, appear_dict.items()))
+    check_arr = sorted(check_arr, key = lambda x: (x[1][0], x[1][1]), reverse=True)
+    for el in check_arr:
+        print((str(el[0]) + ' ')*el[1][0] , end="")
+    print()
 
-# for i in range(n, 0, -1):
-#     if i % 2 == 1:
-#         print(i, end=' ')
-
-
-# Bai 2
-# n = int(input())
-# res = 1
-
-# for i in range(n):
-#     res *= i + 1
-
-# print(res)
-
-# Bai 3
-# n = int(input())
-
-# res = 0
-
-# for i in range(n):
-#     res += 1/(i+1)
-
-# print('%.4f'%res)
-
-# Bai 4
-for i in range(100, 1000):
-    a = i//100
-    b = (i - 100*a)//10
-    c = i - 100*a - 10*b
-
-    if(a ** 3 + b ** 3 + c ** 3 == i):
-        print(i, end=" ")
+    T -= 1
